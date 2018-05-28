@@ -6,8 +6,7 @@ using namespace std;
  
 typedef pair<int, int> pii;
 const int MAXN=1.1e+3;
- 
-int nc;
+
 int n, m, c;
 int vis[MAXN], ft[MAXN], t[MAXN], sub[MAXN];
 
@@ -26,9 +25,10 @@ void dfs(int u){
             dfs(v);
             sub[u]=min(sub[u], sub[v]);
             if(sub[v]>t[u]){
-            int x=u, y=v;
-            if(x>y) swap(x, y);
-                edges.push_back(pii(x, y));
+            	int x=u, y=v;
+ 	    	if(x>y) swap(x, y);
+        	
+		edges.push_back(pii(x, y));
             }
         }else if(v!=ft[u]){
             sub[u]=min(sub[u], t[v]);
