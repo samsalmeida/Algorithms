@@ -1,3 +1,7 @@
+// Bridges in a graph - Algotithm
+// Complexity: O(n + m)
+// By Samyra Vitória
+
 #include <bits/stdc++.h>
 
 using namespace std;
