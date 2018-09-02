@@ -1,4 +1,4 @@
-// Bridges in a graph - Algotithm
+// Bridges in a graph - Algorithm
 // Complexity: O(n + m)
 // By Samyra Vitória
 
