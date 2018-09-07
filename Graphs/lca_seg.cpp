@@ -1,6 +1,7 @@
 // Lowest Common Ancestor - LCA
 // Implement using Segment Tree
-// Complexity: O()
+// Complexity(query): O(log n)
+// Complexity(build): O(2*n)
 // By Samyra Vitória
 
 #include <bits/stdc++.h>
@@ -36,23 +37,24 @@ int op(int a, int b){
 void build(int u, int l , int r){
 	if(l == r)
 		tree[u] = path[l];
-	else
-	{
+	else{
 		int m = (l + r) / 2;
-		build(2*u, l , m);
-		build(2*u + 1, m + 1, r);
+		
+		build(2*u, l , m); build(2*u + 1, m + 1, r);
+		
 		tree[u] = op(tree[2*u], tree[2*u + 1]);
 	}
 }
 
 int query(int u, int l, int r, int a , int b){
-	if(a <= l and r <= b)
-		return tree[u];
+	
+	if(a <= l and r <= b) return tree[u];
+	
 	int m = (l + r) / 2;
-
+	
 	if(b <= m) return query(2*u, l , m, a , b);
 	if(a > m) return query(2*u + 1, m + 1, r, a, b);
-
+	
 	return op(query(2*u, l , m, a , b), query(2*u + 1, m + 1, r, a , b));
 }
 
@@ -63,9 +65,8 @@ int LCA(int a , int b){
 
 int main(){
     
-    dfs(1, 1);
-
-    build(1, 1, t);
-    
-    return 0;
+	dfs(1, 1);
+	build(1, 1, t);
+	
+	return 0;
 }
